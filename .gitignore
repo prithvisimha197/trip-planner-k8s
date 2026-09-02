@@ -1,0 +1,25 @@
+# Local kubeconfig / cluster credentials
+kubeconfig
+*.kubeconfig
+.kube/
+
+# Real secrets (keep only sample/template files in git)
+*-secrets.local.yaml
+secrets.local.yaml
+*.secret.yaml
+
+# Helm (if introduced later)
+charts/*.tgz
+.helm/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Editor swap files
+*.swp
+*.swo
+*~
