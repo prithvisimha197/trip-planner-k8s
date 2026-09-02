@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trip-planner-ui
+  labels:
+    app: trip-planner
+    component: ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trip-planner
+      component: ui
+  template:
+    metadata:
+      labels:
+        app: trip-planner
+        component: ui
+    spec:
+      containers:
+      - name: ui
+        image: prithvisimha197/trip-planner-ui:latest
+        ports:
+        - containerPort: 3000
+          name: http
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
